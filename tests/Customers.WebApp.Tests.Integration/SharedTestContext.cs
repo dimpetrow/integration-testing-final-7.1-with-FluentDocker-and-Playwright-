@@ -23,7 +23,6 @@ namespace Customers.WebApp.Tests.Integration
             .UseContainer()
             .UseCompose()
             .FromFile(DockerComposeFile)
-            .AssumeComposeVersion(ComposeVersion.V2)
             .RemoveOrphans()
             .WaitForHttp("test-app", AppUrl)
             .Build();
