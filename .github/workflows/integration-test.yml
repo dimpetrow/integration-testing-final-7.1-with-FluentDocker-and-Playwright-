@@ -25,6 +25,10 @@ jobs:
         run: pwsh tests/Customers.WebApp.Tests.Integration/bin/Debug/net6.0/playwright.ps1 install --with-deps
     
       - name: Run your tests
+        # the link command is a temp fix for FluentDocker to find docker compose as it still uses DockerCompose v1 instead of v2
+        # https://github.com/mariotoffia/FluentDocker/issues/312
+        # https://docs.docker.com/compose/migrate/
         run: |
           ln -s /usr/libexec/docker/cli-plugins/docker-compose /usr/local/bin/docker-compose
+          dotnet dev-certs https -ep ./src/Customers.WebApp/cert.pfx -p Test1234!
           dotnet test
