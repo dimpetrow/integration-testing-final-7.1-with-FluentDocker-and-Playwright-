@@ -25,7 +25,8 @@ public class AddCustomerTests : IAsyncLifetime
     {
         _page = await _testContext.Browser.NewPageAsync(new BrowserNewPageOptions
         {
-            BaseURL = SharedTestContext.AppUrl
+            BaseURL = SharedTestContext.AppUrl,
+            IgnoreHTTPSErrors = true,
         });
     }
 
