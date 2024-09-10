@@ -25,4 +25,6 @@ jobs:
         run: pwsh tests/Customers.WebApp.Tests.Integration/bin/Debug/net6.0/playwright.ps1 install --with-deps
     
       - name: Run your tests
-        run: dotnet test
+        run: |
+          ln -s /usr/libexec/docker/cli-plugins/docker-compose /usr/local/bin/docker-compose
+          dotnet tests
