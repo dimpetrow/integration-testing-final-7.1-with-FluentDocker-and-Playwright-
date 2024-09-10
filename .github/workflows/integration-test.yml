@@ -27,4 +27,4 @@ jobs:
       - name: Run your tests
         run: |
           ln -s /usr/libexec/docker/cli-plugins/docker-compose /usr/local/bin/docker-compose
-          dotnet tests
+          dotnet test
