@@ -1,6 +1,7 @@
 ﻿
 using Ductus.FluentDocker.Builders;
 using Ductus.FluentDocker.Model.Common;
+using Ductus.FluentDocker.Model.Compose;
 using Ductus.FluentDocker.Services;
 using Microsoft.Playwright;
 
@@ -22,6 +23,7 @@ namespace Customers.WebApp.Tests.Integration
             .UseContainer()
             .UseCompose()
             .FromFile(DockerComposeFile)
+            .AssumeComposeVersion(ComposeVersion.V2)
             .RemoveOrphans()
             .WaitForHttp("test-app", AppUrl)
             .Build();
